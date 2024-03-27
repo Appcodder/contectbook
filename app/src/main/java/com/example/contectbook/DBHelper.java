@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(@Nullable Context context) {
-        super(context,"mydata",null,1);
+        super(context, "mydata", null, 1);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String qry = "select * from mycontectbook";
 
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery(qry,null);
+        Cursor cursor = sqLiteDatabase.rawQuery(qry, null);
         return cursor;
 
     }
