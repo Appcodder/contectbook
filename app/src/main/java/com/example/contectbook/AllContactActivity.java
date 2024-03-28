@@ -15,11 +15,9 @@ import java.util.ArrayList;
 public class AllContactActivity extends AppCompatActivity {
 
     FloatingActionButton btnctreatenumber;
-    RecyclerView recyclerView;
 
-    ArrayList<Integer> idlist = new ArrayList<>();
-    ArrayList<String> nameList = new ArrayList<>();
-    ArrayList<String> numberList = new ArrayList<>();
+    RecyclerView recyclerView;
+    ArrayList<User> userlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +49,11 @@ public class AllContactActivity extends AppCompatActivity {
             String name = cursor.getString(1);
             String number = cursor.getString(2);
 
-            idlist.add(userid);
-            nameList.add(name);
-            numberList.add(number);
+            User user = new User(userid,name,number);
+            userlist.add(user);
         }
 
-        Contactadapter contactadapter = new Contactadapter(AllContactActivity.this,nameList,numberList,idlist);
+        Contactadapter contactadapter = new Contactadapter(AllContactActivity.this,userlist);
         recyclerView.setAdapter(contactadapter);
     }
 }

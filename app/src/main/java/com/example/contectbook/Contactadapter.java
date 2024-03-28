@@ -1,9 +1,10 @@
 package com.example.contectbook;
 
-import android.content.Context;
+import android.media.MediaDrm;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,15 +14,11 @@ import java.util.ArrayList;
 
 public class Contactadapter extends RecyclerView.Adapter<Contactadapter.Myclass> {
     AllContactActivity allContactActivity;
-    ArrayList<String> nameList;
-    ArrayList<String> numberList;
-    ArrayList<Integer> idlist;
+    ArrayList<User> userlist;
 
-    public Contactadapter(AllContactActivity allContactActivity, ArrayList<String> nameList, ArrayList<String> numberList, ArrayList<Integer> idlist) {
+    public Contactadapter(AllContactActivity allContactActivity, ArrayList<User> userlist) {
         this.allContactActivity = allContactActivity;
-        this.nameList = nameList;
-        this.numberList = numberList;
-        this.idlist = idlist;
+        this.userlist = userlist;
     }
 
     @NonNull
@@ -35,33 +32,39 @@ public class Contactadapter extends RecyclerView.Adapter<Contactadapter.Myclass>
     @Override
     public void onBindViewHolder(@NonNull Contactadapter.Myclass holder, int position) {
 
-        int userid = idlist.get(position);
-        String name = nameList.get(position);
-        String number = numberList.get(position);
+        User user = userlist.get(position);
+        int id = user.getUserid();
+        String name = user.getName();
+        String number = user.getNumber();
 
         holder.tvcapital.setText(name);
         holder.tvname.setText(name);
         holder.tvnumber.setText(number);
 
+        holder.ivoption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return idlist.size();
+        return userlist.size();
     }
 
     public class Myclass extends RecyclerView.ViewHolder {
-
         TextView tvcapital;
         TextView tvname;
         TextView tvnumber;
+        ImageView ivoption;
         public Myclass(@NonNull View itemView) {
             super(itemView);
-
             tvcapital = itemView.findViewById(R.id.tvcapital);
             tvname = itemView.findViewById(R.id.tvname);
             tvnumber = itemView.findViewById(R.id.tvnumber);
-
+            ivoption = itemView.findViewById(R.id.ivoption);
         }
     }
 }

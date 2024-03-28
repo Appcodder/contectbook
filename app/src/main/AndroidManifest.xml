@@ -13,13 +13,10 @@
         android:theme="@style/Theme.Contectbook"
         tools:targetApi="31">
         <activity
-            android:name=".AllContactActivity"
-            android:exported="false" />
-        <activity
             android:name=".Insertcontectactivity"
             android:exported="false" />
         <activity
-            android:name=".Allcontectactivity"
+            android:name=".AllContactActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
